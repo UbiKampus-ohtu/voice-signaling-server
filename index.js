@@ -1,10 +1,25 @@
+const express = require('express')
+const app = express()
+const http = require('http')
+const cors = require('cors')
+
+app.use(cors())
+app.use('/', express.static('./static/'))
+
+const server = http.createServer(app)
 
 const WebSocketServer = require('ws').Server
 
 let sockets = {}
 let socketsCount = 0
 
-const wss = new WebSocketServer({port: 9001})
+const wss = new WebSocketServer({
+  server: server
+})
+
+server.listen(9001, () => {
+  console.log("server started at port 9001")
+})
 
 const transmit = (socket, data) => {
   const payload = JSON.stringify(data)

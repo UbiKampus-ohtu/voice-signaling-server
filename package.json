@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/UbiKampus-ohtu/voice-signaling-server#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
     "ws": "^8.5.0"
   }
 }
